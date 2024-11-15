@@ -1,0 +1,26 @@
+import { Injectable } from '@nestjs/common';
+import { Create{{pascalCase name}}Dto } from './dto/create-{{camelCase name}}.dto';
+import { Update{{pascalCase name}}Dto } from './dto/update-{{camelCase name}}.dto';
+
+@Injectable()
+export class {{pascalCase name}}Service {
+  create(createDto: Create{{pascalCase name}}Dto) {
+    return 'This action creates a new {{camelCase name}}';
+  }
+
+  findAll() {
+    return 'This action returns all {{camelCase name}}';
+  }
+
+  findOne(id: number) {
+    return `This action returns a #${id} {{camelCase name}}`;
+  }
+
+  update(id: number, updateDto: Update{{pascalCase name}}Dto) {
+    return `This action updates a #${id} {{camelCase name}}`;
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} {{camelCase name}}`;
+  }
+}
