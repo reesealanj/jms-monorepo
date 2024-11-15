@@ -27,4 +27,53 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
     ],
   });
+
+  plop.setGenerator("context", {
+    description: "Generate a React Context with a custom hook",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "What is the name of your Context (e.g., User)?",
+      },
+    ],
+    actions: [
+      // Create Context file
+      {
+        type: "add",
+        path: "src/contexts/{{pascalCase name}}Context.tsx",
+        templateFile: "templates/context.hbs",
+      },
+      // Create hook file
+      {
+        type: "add",
+        path: "src/hooks/use{{pascalCase name}}.ts",
+        templateFile: "templates/useContext.hbs",
+      },
+    ],
+  });
+
+  plop.setGenerator("query-hook", {
+    description: "Generate a tanstack/query hook for fetching data",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "What is the name of your hook (e.g., UserData)?",
+      },
+      {
+        type: "input",
+        name: "endpoint",
+        message: "What is the API endpoint for this hook (e.g., /api/user)?",
+      },
+    ],
+    actions: [
+      // Create the query hook file
+      {
+        type: "add",
+        path: "src/hooks/{{camelCase name}}.ts",
+        templateFile: "templates/reactQueryHook.hbs",
+      },
+    ],
+  });
 }

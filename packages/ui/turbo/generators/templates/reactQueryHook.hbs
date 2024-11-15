@@ -1,0 +1,26 @@
+// {{camelCase name}}.ts
+
+import { useQuery } from '@tanstack/react-query';
+
+interface {{pascalCase name}}Response {
+  // Define the structure of the response data
+}
+
+interface use{{pascalCase name}}Props {
+  // Define the structure of the function props
+}
+
+const fetch{{pascalCase name}} = async (props: use{{pascalCase name}}Props): Promise<{{pascalCase name}}Response> => {
+  const response = await fetch('{{{ endpoint }}}');
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+};
+
+export const use{{pascalCase name}} = (props: use{{pascalCase name}}Props) => {
+  return useQuery<{{pascalCase name}}Response, Error>({
+    queryKey: ['{{camelCase name}}'],
+    queryFn: fetch{{pascalCase name}}(props),
+  });
+};

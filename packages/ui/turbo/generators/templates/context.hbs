@@ -1,0 +1,22 @@
+// {{pascalCase name}}Context.tsx
+import React, { createContext, useState, ReactNode } from 'react';
+
+export interface {{pascalCase name}}ContextProps {
+  // Define the properties for your context state here
+}
+
+interface {{pascalCase name}}ProviderProps {
+  children: ReactNode;
+}
+
+export const {{pascalCase name}}Context = createContext<{{pascalCase name}}ContextProps | undefined>(undefined);
+
+export const {{pascalCase name}}Provider: React.FC<{{pascalCase name}}ProviderProps> = ({ children }) => {
+  const [state, setState] = useState<{{pascalCase name}}ContextProps>({});
+
+  return (
+    <{{pascalCase name}}Context.Provider value=\{{ state, setState }}>
+      {children}
+    </{{pascalCase name}}Context.Provider>
+  );
+};
